@@ -136,4 +136,71 @@ function isPalindrome(str) {
 isPalindrome('Civic')
 
 
-//  11.
+//  11. Pow
+function getPow(number, pow) {
+    let result = 1
+    if (pow < 0) {
+        number = 1 / number
+        pow = Math.abs(pow)
+    }
+    for (let i = 1; i <= pow; i++) result *= number
+    return result
+}
+
+getPow(2, -3)
+
+
+//  12. Check if the element includes in array
+function isIncludes(array, element) {
+    let result = false 
+    array.forEach((item, i) => {
+        if (array[i] === element) result = true
+    })
+    return result
+}
+
+isIncludes([1, 2, 3, 4, 5], 3)
+
+
+//  13. Find shortest word in string 
+function findShortest(string) {
+    if (!string) throw new Error('Provided string is empty')
+
+    const words = string.split(' ')
+    let shortest = words[0]
+    words.forEach(word => {
+        if (shortest.length > word.length)
+            shortest = word
+    })
+    return shortest
+}
+
+findShortest('qwer asds f')
+
+
+//  14. Calculate the sum of the main diagonal of the matrix
+function calcSumDiagonal(matrix) {
+    let sum = 0
+    matrix.forEach((row, i) => {
+        row.forEach((col, j) => {
+            if (i == j) sum += matrix[i][j] 
+        })
+    })
+    return sum
+}
+
+calcSumDiagonal([[1, 2], [3, 4]])
+
+
+//  15. Calculate the sum of the column of the matrix
+function calcSumColumn(matrix, col) {
+    if(col >= matrix.length) throw new Error('Matrix has less columns')
+    
+    let sum = 0 
+    matrix.forEach((item) => {
+        sum += item[col]
+    })
+    return sum
+}
+
+calcSumColumn([[1, 2], [3, 4]], 1) 
