@@ -136,7 +136,75 @@ function isPalindrome(str) {
 isPalindrome('Civic')
 
 
-//  11.
+//  11. Pow
+function getPow(number, pow) {
+    let result = 1
+    if (pow < 0) {
+        number = 1 / number
+        pow = Math.abs(pow)
+    }
+    for (let i = 1; i <= pow; i++) result *= number
+    return result
+}
+
+getPow(2, -3)
+
+
+//  12. Check if the element includes in array
+function isIncludes(array, element) {
+    let result = false 
+    array.forEach((item, i) => {
+        if (array[i] === element) result = true
+    })
+    return result
+}
+
+isIncludes([1, 2, 3, 4, 5], 3)
+
+
+//  13. Find shortest word in string 
+function findShortest(string) {
+    if (!string) throw new Error('Provided string is empty')
+
+    const words = string.split(' ')
+    let shortest = words[0]
+    words.forEach(word => {
+        if (shortest.length > word.length)
+            shortest = word
+    })
+    return shortest
+}
+
+findShortest('qwer asds f')
+
+
+//  14. Calculate the sum of the main diagonal of the matrix
+function calcSumDiagonal(matrix) {
+    let sum = 0
+    matrix.forEach((row, i) => {
+        row.forEach((col, j) => {
+            if (i == j) sum += row[j] 
+        })
+    })
+    return sum
+}
+
+calcSumDiagonal([[1, 2], [3, 4]])
+
+
+//  15. Calculate the sum of the column of the matrix
+function calcSumColumn(matrix, col) {
+    if(col >= matrix.length) throw new Error('Matrix has less columns')
+    
+    let sum = 0 
+    matrix.forEach((item) => {
+        sum += item[col]
+    })
+    return sum
+}
+
+calcSumColumn([[1, 2], [3, 4]], 1)
+
 
 //  16. The sum of numbers which divide on value 
 function getSum(value, lastNumber) {
@@ -195,3 +263,66 @@ function sumDigits(num){
 } 
 let res = sumDigits(123);
 console.log(res);
+
+
+//  21. The difference between maximum and minimum as a number in the array
+function mostNumber(array) {
+    if (!array.length) throw new Error('Provided empty array')
+
+    return Math.max(...array) - Math.min(...array)
+}
+
+mostNumber([1, 2, 3])
+
+//  22. Find the words which are common between these strings.
+function findCommon(string1, string2) {
+    const array1 = string1.split(',')
+    const array2 = string2.split(',')
+    let commonWords = []
+
+    array1.forEach(word => {
+        if (array2.includes(word)) commonWords.push(word)
+    })
+
+    return commonWords.join(',')
+}
+
+findCommon("one,two,three", "four,five,one,two,six,three")
+
+
+//  23. Count quantity of inversion in the array
+function countInversion(array) {
+    let inversion = 0
+    array.forEach((item, i) => {
+        if (item  > array[i + 1]) inversion += 1  
+    })
+
+    return inversion
+}
+
+countInversion([1, 2, 4, 3, 5, 7, 6]) 
+
+
+//  24. Count mean value of the array 
+function countMean(array) {
+    if (!array.length) throw new Error('Provided empty array')
+
+    let sum = 0
+    array.forEach(item => sum += item)
+
+    return sum / array.length
+}
+
+countMean([1, 2, 3, 4])
+
+
+//  25. Count sum of object values
+function sumPrices(prices) {
+
+  let sum = 0;
+  for (let price of Object.values(prices)) sum += price;
+  
+  return sum;
+}
+
+sumPrices(prices = {'bread': 20, 'beer': 30, 'meat': 90 })
