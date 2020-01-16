@@ -204,3 +204,63 @@ function calcSumColumn(matrix, col) {
 }
 
 calcSumColumn([[1, 2], [3, 4]], 1) 
+
+
+//  16. The sum of numbers which divide on value 
+function getSum(value, lastNumber) {
+    if (value > lastNumber) throw new Error('Value bigger than the last number')
+        else if (value == 0) throw new Error('Value can`t be zero')
+
+    let sum = 0
+    for (let i = 0; i <= lastNumber; i++)
+        if (i % value == 0) sum += i
+    return sum
+}
+
+getSum(0, 30)
+
+
+//  17. Check if two words are an anagram
+function isAnagram(firstStr, secondStr) {
+    if (firstStr.length !== secondStr.length) return false
+
+    let firstArr = firstStr.split('').sort()
+    let secondArr = secondStr.split('').sort()
+
+    return firstArr.join('') === secondArr.join('')
+}
+
+isAnagram('sebek', 'kebes')
+
+
+//  18. Check if number is prime
+function isPrime(number) {
+    if (number <= 1) return false
+
+    for (let i = 2; i < number; i++) 
+        if (number % i == 0) return false
+    return true
+}
+
+isPrime(13)
+
+
+//  19. Count vowels letters in string
+function countVowels(string) {
+    const vowels = ['a', 'o', 'i', 'u', 'e']
+    let result = string.toLowerCase().split('').filter(letter => vowels.includes(letter))
+    return result.length
+}
+
+const res = countVowels('sebEk')
+console.log(res)
+
+
+//  20. Count sum of the digits of the number
+function sumDigits(num){ 
+  let sum =  num.toString().split('').reduce((prev, cur) => { return +prev + +cur}); 
+  return sum;
+} 
+let res = sumDigits(123);
+console.log(res);
+
