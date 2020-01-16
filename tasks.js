@@ -264,3 +264,75 @@ function sumDigits(num){
 let res = sumDigits(123);
 console.log(res);
 
+
+//  21. The difference between maximum and minimum as a number in the array
+function mostNumber(array) {
+    if (!array.length) throw new Error('Provided empty array')
+
+    return Math.max(...array) - Math.min(...array)
+}
+
+mostNumber([1, 2, 3])
+
+
+//  22. Find the words which are common between these strings.
+function findCommon(string1, string2) {
+    const array1 = string1.split(',')
+    const array2 = string2.split(',')
+    let commonWords = []
+
+    array1.forEach(word => {
+        if (array2.includes(word)) commonWords.push(word)
+    })
+
+    return commonWords.join(',')
+}
+
+findCommon("one,two,three", "four,five,one,two,six,three")
+
+
+//  23. Count quantity of inversion in the array
+function countInversion(array) {
+    let inversion = 0
+    array.forEach((item, i) => {
+        if (item  > array[i + 1]) inversion += 1  
+    })
+
+    return inversion
+}
+
+countInversion([1, 2, 4, 3, 5, 7, 6]) 
+
+//  23.1 
+function countInversion(array) {
+    const sortedArray = [...array].sort()
+    const inversions = array.filter((item, i) => item !== sortedArray[i]).length
+    return inversions
+}
+
+countInversion([1, 2, 5, 3, 4, 7, 6])
+
+
+//  24. Count mean value of the array 
+function countMean(array) {
+    if (!array.length) throw new Error('Provided empty array')
+
+    let sum = 0
+    array.forEach(item => sum += item)
+
+    return sum / array.length
+}
+
+countMean([1, 2, 3, 4])
+
+
+//  25. Count sum of object values
+function sumPrices(prices) {
+
+  let sum = 0;
+  for (let price of Object.values(prices)) sum += price;
+
+  return sum;
+}
+
+sumPrices(prices = {'bread': 20, 'beer': 30, 'meat': 90 })
